@@ -192,6 +192,7 @@ const (
 	TUNNEL_TYPE_MPLS_IN_GRE TunnelType = 11
 	TUNNEL_TYPE_VXLAN_GRE   TunnelType = 12
 	TUNNEL_TYPE_MPLS_IN_UDP TunnelType = 13
+	TUNNEL_TYPE_IP_IN_IPV6  TunnelType = 14
 	TUNNEL_TYPE_SR_POLICY   TunnelType = 15
 	TUNNEL_TYPE_GENEVE      TunnelType = 19
 )
@@ -216,6 +217,8 @@ func (p TunnelType) String() string {
 		return "vxlan-gre"
 	case TUNNEL_TYPE_MPLS_IN_UDP:
 		return "mpls-in-udp"
+	case TUNNEL_TYPE_IP_IN_IPV6:
+		return "ip-in-ipv6"
 	case TUNNEL_TYPE_SR_POLICY:
 		return "sr-policy"
 	case TUNNEL_TYPE_GENEVE:
@@ -10295,6 +10298,8 @@ func ParseExtendedCommunity(subtype ExtendedCommunityAttrSubType, com string) (E
 			t = TUNNEL_TYPE_VXLAN_GRE
 		case TUNNEL_TYPE_MPLS_IN_UDP.String():
 			t = TUNNEL_TYPE_MPLS_IN_UDP
+		case TUNNEL_TYPE_IP_IN_IPV6.String():
+			t = TUNNEL_TYPE_IP_IN_IPV6
 		case TUNNEL_TYPE_GENEVE.String():
 			t = TUNNEL_TYPE_GENEVE
 		case "L2TPv3 over IP":
@@ -10315,6 +10320,8 @@ func ParseExtendedCommunity(subtype ExtendedCommunityAttrSubType, com string) (E
 			t = TUNNEL_TYPE_VXLAN_GRE
 		case "MPLS in UDP":
 			t = TUNNEL_TYPE_MPLS_IN_UDP
+		case "IP in IPV6":
+			t = TUNNEL_TYPE_IP_IN_IPV6
 		case "GENEVE":
 			t = TUNNEL_TYPE_GENEVE
 		default:
@@ -10562,6 +10569,8 @@ func (e *EncapExtended) String() string {
 		return "VXLAN GRE"
 	case TUNNEL_TYPE_MPLS_IN_UDP:
 		return "MPLS in UDP"
+	case TUNNEL_TYPE_IP_IN_IPV6:
+		return "IP in IPV6"
 	case TUNNEL_TYPE_SR_POLICY:
 		return "SR Policy"
 	case TUNNEL_TYPE_GENEVE:
